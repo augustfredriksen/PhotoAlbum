@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/userFragment">
+
+    <fragment
+        android:id="@+id/userFragment"
+        android:name="com.example.oblig3_0_3.screens.users.UserFragment"
+        android:label="Users"
+        tools:layout="@layout/fragment_user" >
+        <action
+            android:id="@+id/action_userFragment_to_albumFragment"
+            app:destination="@id/albumFragment" />
+        <action
+            android:id="@+id/action_userFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/albumFragment"
+        android:name="com.example.oblig3_0_3.screens.albums.AlbumFragment"
+        android:label="Albums"
+        tools:layout="@layout/fragment_album" >
+        <action
+            android:id="@+id/action_albumFragment_to_thumbnailFragment"
+            app:destination="@id/thumbnailFragment" />
+
+        <argument
+            android:name="userId"
+            app:argType="integer"/>
+
+    </fragment>
+    <fragment
+        android:id="@+id/photoFragment"
+        android:name="com.example.oblig3_0_3.screens.photos.PhotoFragment"
+        android:label="Photo"
+        tools:layout="@layout/fragment_photo">
+
+        <argument
+            android:name="thumbnailId"
+            app:argType="integer"/>
+        <action
+            android:id="@+id/action_photoFragment_to_userFragment"
+            app:destination="@id/userFragment" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/thumbnailFragment"
+        android:name="com.example.oblig3_0_3.screens.thumbnails.ThumbnailFragment"
+        android:label="Photos"
+        tools:layout="@layout/fragment_thumbnail" >
+        <action
+            android:id="@+id/action_thumbnailFragment_to_photoFragment"
+            app:destination="@id/photoFragment" />
+
+        <argument
+            android:name="albumId"
+            app:argType="integer"/>
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.oblig3_0_3.SettingsFragment"
+        android:label="SettingsFragment" />
+</navigation>
